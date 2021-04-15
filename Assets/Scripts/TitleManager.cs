@@ -9,6 +9,10 @@ public class TitleManager : MonoBehaviour {
         SceneManager.LoadScene("DiscBattle");
     }
 
+    public void StartDiscBattleTut() {
+        print("Requested: DiscTut");
+    }
+
     public void QuitGame() {
         Application.Quit();
     }
