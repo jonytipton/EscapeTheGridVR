@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class VectorLerp : MonoBehaviour
 {
+    [SerializeField] [Range(0f, 4f)] float lerpTime;
+    [SerializeField] Vector3[] myPositions;
+    int posIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {

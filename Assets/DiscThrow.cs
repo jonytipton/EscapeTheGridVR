@@ -44,6 +44,8 @@ public class DiscThrow : MonoBehaviour
         discReturned = true;
         disc.GetComponent<TrailRenderer>().enabled = false;
         discReturnCountdown = discReturnDelay;
+
+        //TODO add inertia based throw
     }
 
 
@@ -61,12 +63,14 @@ public class DiscThrow : MonoBehaviour
     private void ReturnDisc() {
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         transform.position = Vector3.MoveTowards(transform.position, throwingHand.transform.position, .35f);
+        //TODO freeze movement and speed up return/make it more consistent speed
     }
     
     private void OnCollisionEnter(Collision collision) {
         //Debug.Log("Hit Surface. Changing material base color!");
         Color newColor = UnityEngine.Random.ColorHSV(0f, 1f, .5f, 1f, .5f, 1f);
         trailMaterial.SetColor("_BaseColor", newColor);
+        //TODO add correct bounce behavior
     }
 
 
