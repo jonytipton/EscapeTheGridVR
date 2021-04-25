@@ -35,6 +35,7 @@ public class DiscThrow : MonoBehaviour
         disc.GetComponent<TrailRenderer>().enabled = true;
         discGrabbed = false;
         discReturned = false;
+        disc.GetComponent<Rigidbody>().freezeRotation = true;
         //add rotation
     }
 
@@ -44,7 +45,7 @@ public class DiscThrow : MonoBehaviour
         discReturned = true;
         disc.GetComponent<TrailRenderer>().enabled = false;
         discReturnCountdown = discReturnDelay;
-
+        disc.GetComponent<Rigidbody>().freezeRotation = false;
         //TODO add inertia based throw
     }
 
