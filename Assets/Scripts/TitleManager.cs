@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour {
 
-    public GameObject tutDisc;
+    public GameObject discTutPanel;
+    public GameObject discPanel;
 
     public void StartDiscBattle() {
         Debug.Log("Requested: DiscBattle");
@@ -14,9 +15,8 @@ public class TitleManager : MonoBehaviour {
 
     public void StartDiscBattleTut() {
         Debug.Log("Requested: DiscTut");
-        tutDisc.SetActive(true);
-        tutDisc.GetComponent<Rigidbody>().useGravity = true;
-       
+        discPanel.SetActive(false);
+        discTutPanel.SetActive(true);
     }
 
     //TODO
