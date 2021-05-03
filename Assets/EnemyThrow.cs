@@ -5,19 +5,20 @@ using UnityEngine;
 public class EnemyThrow : MonoBehaviour
 {
     public GameObject enemyDisc;
-    public  Transform discSpawnPoint;
+    public Transform discParent;
+    Transform discSpawnPoint;
     public Animator enemyAnimator;
     public float throwCountdown = 5f;
     public GameObject player;
     public bool thrown = false;
     public float speed = 5;
     public float discSpawnCountdown = 10;
-    bool discReady = true;
+    public bool discReady = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        discSpawnPoint = enemyDisc.transform;
     }
 
     // Update is called once per frame
@@ -26,10 +27,11 @@ public class EnemyThrow : MonoBehaviour
         throwCountdown -= Time.deltaTime;
         if (throwCountdown <= 0 && discReady) {
             //trigger throw animation, animation event in timeline will trigger ThrowDisc() below
+            Debug.Log("Trigger anim");
             enemyAnimator.SetBool("Throw", true);
             discReady = false;
         }
-        if (thrown) {
+        if (!discReady) {
             discSpawnCountdown -= Time.deltaTime;
 
             if (discSpawnCountdown <= 0) {
@@ -45,15 +47,18 @@ public class EnemyThrow : MonoBehaviour
         direction.Normalize();
         enemyDisc.GetComponent<Rigidbody>().AddForce(direction * 1000 * speed);
         thrown = true;
+        enemyAnimator.SetBool("Throw", false);
     }
 
     void SpawnEnemyDisc() {
+        Debug.Log("Spawn Disc");
         enemyDisc.GetComponent<Rigidbody>().useGravity = false;
-        enemyDisc.transform.position = discSpawnPoint.position;
-        enemyDisc.transform.SetParent(discSpawnPoint);
+        enemyDisc.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        enemyDisc.transform.SetParent(discParent);
+        enemyDisc.transform.localPosition = new Vector3(0, 0, 0); // discSpawnPoint.transform.position;
+        enemyDisc.transform.localRotation = Quaternion.identity;
+        throwCountdown = 10;
         discReady = true;
         discSpawnCountdown = 10;
-        throwCountdown = 10;
-        thrown = false;
     }
 }

@@ -7,7 +7,7 @@ public class TitleManager : MonoBehaviour {
 
     public GameObject discTutPanel;
     public GameObject discPanel;
-
+    public Animator enemyAnim;
     public void StartDiscBattle() {
         Debug.Log("Requested: DiscBattle");
         SceneManager.LoadScene("DiscBattle");
@@ -17,6 +17,7 @@ public class TitleManager : MonoBehaviour {
         Debug.Log("Requested: DiscTut");
         discPanel.SetActive(false);
         discTutPanel.SetActive(true);
+        enemyAnim.SetBool("Throw", true);
     }
 
     //TODO
