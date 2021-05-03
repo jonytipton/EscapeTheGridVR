@@ -13,7 +13,7 @@ public class DiscThrow : MonoBehaviour
     private bool discReturned = false;
     public float discReturnDelay = 3f;
     private float discReturnCountdown;
-
+    public float pushForce = 5;
     public GameObject throwingHand;
 
     // Start is called before the first frame update
@@ -63,7 +63,7 @@ public class DiscThrow : MonoBehaviour
 
     private void ReturnDisc() {
         gameObject.GetComponent<Rigidbody>().useGravity = false;
-        transform.position = Vector3.MoveTowards(transform.position, throwingHand.transform.position, .35f);
+        transform.position = Vector3.MoveTowards(transform.position, throwingHand.transform.position, Time.deltaTime * 750);
         //TODO freeze movement and speed up return/make it more consistent speed
     }
     
@@ -71,7 +71,7 @@ public class DiscThrow : MonoBehaviour
         //Debug.Log("Hit Surface. Changing material base color!");
         Color newColor = UnityEngine.Random.ColorHSV(0f, 1f, .5f, 1f, .5f, 1f);
         trailMaterial.SetColor("_BaseColor", newColor);
-        //TODO add correct bounce behavior
+       
     }
 
 
