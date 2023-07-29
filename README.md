@@ -3,7 +3,4 @@
 ## Overview
 
 ## Demo
-<body>
-  <a href="https://www.youtube.com/watch?v=dL5uYdS4kTQ">
-  <img width="1792" alt="Escape The Grid VR Video Link" src="https://github.com/jonytipton/EscapeTheGridVR/assets/42556403/bb6f969b-57e6-413c-86e0-e58b47eead40">
-</body>
+[![EscapeTheGrid Video](https://github.com/jonytipton/EscapeTheGridVR/assets/42556403/578e1ece-abcd-4ae6-901d-b6d792c14f41)](https://youtube.com/clip/Ugkx4nW6PIqeu34A-eg-ZT5PzVORGgBdMqq1 "EscapeTheGrid Video")
